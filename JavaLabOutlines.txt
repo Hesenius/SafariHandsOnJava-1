@@ -20,7 +20,7 @@ General guidance.
 
 Getting started
 - Build hello world from scratch
-- what if the entry point is not public, static, void, main, String[]
+- what happens if the entry point is not public, static, void, main, String[]
 - what if the argument name is not "args"?
 - what if you change the filename?
 - what if you change the directory?

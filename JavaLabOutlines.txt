@@ -1,0 +1,275 @@
+Lab Ideas For "Hands On Java"
+
+Contact info for help: simon@dancingcloudservices.com
+
+Invitation link for slack channel:
+
+https://join.slack.com/t/dancingcloud-services/shared_invite/zt-1asu6wcfb-2IkN9u1VEFr39WN6jAliGQ
+
+(side note: if you don't want to use Slack, just communicate with me via email and I'll do my best to help that way. I know some folks dislike slack, or might feel it's insecure. There's no obligation here!)
+
+General guidance.
+- I have not provided "sample solutions"--the purpose of lab work is to find out what I did not explain well enough, and find out what you do, and what you do not, understand.
+  If you're having trouble, let me know, I'll try to help by email, and/or we might discuss the issue in the next session (particularly if others have the same difficulty)
+- these are exercise *suggestions*, you can attempt whichever of these seem interesting to you
+- it's likely to be most useful to you to attempt the exercises that aren't obviously trivial for you
+- you don't have to do them exactly as described, if you can attempt a problem by simplifying it a little, go right ahead
+- in any case where it's not explicitly stated, verify that your code does what it should.
+  This might involve running your code, or perhaps writing a main method that exercises it and then runs it
+  Note that I've not always specified exactly how you should exercise your solution code, that's a problem for you too
+
+Getting started
+- Build hello world from scratch
+- what if the entry point is not public, static, void, main, String[]
+- what if the argument name is not "args"?
+- what if you change the filename?
+- what if you change the directory?
+- build and run your program from the command line
+- modify the program so that it obtains an instance of java.time.LocalDateTime
+  and concatenates that object's representation to the end of the message
+  Assuming the necessary import is in place, you can create this instance using:
+  LocalDateTime.now()
+- modify the program to prompt the user for their name and change the output
+  message to something of the form
+  Hello Albert, it's currently 2022-04-14T11:12:02.126584036
+
+Manipulating variables
+- Write a program that declares and initializes two variables of byte type.
+- Initialize them to the value 99
+- Add them together and assign the result to a new variable
+- What type is required for that new variable?
+- What is the sum?
+- What can you do to force the strange value to be stored in a byte variable?
+- What can you do to allow the new variable to be of byte type?
+- What value is printed for the sum if the new variable is byte?
+- Change the type of the variables to be one int and one float. What's the type of the result?
+- What happens if you change the initialization of the float from 99 to 99.0
+- How can you correct this?
+
+- Initialize three variables, two of type int and one of type String, call them i1, i2, and s
+- What's the effect of printing i1 + s
+- What's the effect of printing i1 + i2 + s
+- What's the effect of printing i1 + s + i2
+- What's the effect of printing s + i1 + i2
+- What's happening?
+
+Equality tests
+- write a program that prompts for, and reads, a word from the user
+- then prompt for and read a second word
+- print out whether the two words are the same
+- print out whether the words are the same ignoring capitalization
+
+Flow Control
+
+Create a guessing game so that the computer chooses a random number in the range 1 to 3, the user is prompted to enter a guess. Print a message indicating if the guess is correct or incorrect.
+- Do this using the if / else construction
+- Do this again using the ? : expression
+- Do this again so the message printed includes the information of whether your guess was too high or too low
+- Can you do this using a switch / case construct? If you can, do so. If not, why not?
+
+Modify the game so the chosen number is in the range 1 to 9, the computer prints whether the guess is too high or too low, and the user is asked to guess again until the guess is correct. Print out the number of attempts taken to get the right answer.
+- Do this with a while loop
+- Do this with a do-while loop
+- Can you do this with a C-style for loop? If you can, do so. If not, why not?
+
+Convert a number (1-12) into the name of a corresponding month
+- Do this with an if/else-if/else structure
+- Do this with a case statement, use both the new and the old syntax forms
+- Do this with a case expression
+- In each case, ensure that an invalid month number is handled cleanly
+
+Write a program that prints the numbers 1 to 10 in two columns
+- the left column should have the numbers counting up, while the right column counts down, like this:
+  1  10
+  2  9
+  3  8
+  ... and so on
+- do this using a single c-style for loop with no additional code before or after the loop
+- can you find two (or more) ways to do this, while still having all the code in the loop structure
+
+Make a copy of a text file
+- Prompt the user for the name of an input file, and read the name from the console
+- Prompt the user for the name of the output file, and read that name from the console
+- Open both files and copy the contents of the first to the second
+(arrange that your main method is declared as:
+  public static void main(String [] args) throws Throwable
+so that the exceptions caused by file handling do not prevent the code from compiling)
+
+Convert a date, given as four int values (weekday number, day number, month number, and year) into a human-friendly format, such as Wednesday, March 2nd, 2022
+- use arrays to support the lookup of the weekday name, month name, and the suffix for the ordinal value of day of month (that is "st", "nd", "rd", "th" and so on).
+- find the names of days of week and months in two other languages (use google translate or other resource of your choosing)
+- arrange to use a fifth number to represent the language for this presentation
+- convert your weekday-name and month-name arrays into two dimensional arrays where the primary dimension is language
+- complete this by using the language identity value to select text in the appropriate language
+
+Implement "Zeller's Congruence" as a static method
+- write the method to take three int type arguments representing day-of-month, month, and year
+- if the month is 1 or 2, modify the month by adding 12 and the year by subtracting 1
+- return the (int type) result of this computation:
+  (day + (13 * (month + 1) / 5) + year + year / 4 - year / 100 + year / 400) % 7
+  this represents the day of the week as 0=Saturday through to 6=Friday
+- can you create an overloaded method with the same name and arguments that returns the day of week as a String name, instead of the numeric indication?
+  if so, do so, if not, why not?
+
+Package your date presentation code as a static method
+- the arguments should be the weekday number, day of month, month, and year as four int type arguments
+- the return type for the method should be String
+
+Create an overloading method (i.e. use the same name as the above method) with only three int arguments
+- these arguments should be day of month, month, and year
+- use the zeller's congruence code to provide the weekday number
+- delegate to (that is, call) the existing presentation method so you do not duplicate the code for calculating the whole presentation part
+
+Write methods that test whether int values representing valid dates.
+- first write a method to test if an int value is a valid month number (i.e. is in the range 1 to 12)
+  throw a DateTimeException if if the month number is out of range
+- test the method, then change the code to throw a DataFormatException when an invalid month number is provided
+  What else has to change?
+- write another method to determine if a year is a leap year (a year is a leap year if it's exactly divisible by 400, or if it's divisible by 4 but not by 100)
+  what's a suitable way to indicate the result of this inquiry?
+- write a method that tests if three int values form a valid date, throw a DateTimeException if not
+- write a program that prompts the user for three int values, for day, month, and year
+  use the test methods you've created and the previous methods that present dates nicely so that
+  your program either prints the date (and day of week) neatly formatted, or prompts for another try
+  if the entered values did not form a valid date
+
+Copy these two classes into a new package in your project:
+------------
+public class MyCloseable implements AutoCloseable {
+  private static int nextId = 1;
+  private int myId = nextId++;
+  private boolean open = true;
+
+  @Override
+  public void close() throws Exception {
+    if (!open) System.out.println("oops, double closing " + this);
+    System.out.println("Closing " + this);
+    open = false;
+  }
+
+  public void useResource() throws IOException {
+    if (Math.random() > 0.3) throw new IOException(this + " failed during use");
+  }
+  @Override
+  public String toString() {
+    return "MyCloseable, myId = " + myId + " state = " + (open ? "open" : "closed");
+  }
+}
+------------
+public class UseMyCloseable1 {
+  public static void main(String[] args) {
+    MyCloseable mc1 = new MyCloseable();
+    MyCloseable mc2 = new MyCloseable();
+    System.out.println("mc1 is " + mc1);
+    System.out.println("mc2 is " + mc2);
+    try {
+      mc1.useResource();
+      mc2.useResource();
+    } catch (IOException ioe) {
+      System.out.println(ioe);
+    }
+    System.out.println("mc1 is " + mc1);
+    System.out.println("mc2 is " + mc2);
+  }
+}
+------------
+- complete the code as necessary (package and import statements), then run the result several times
+- what do you notice about the state of the resources at the time the program ends?
+- Create a new main method in a class of your own, copy the supplied main method body into it, then try to use finally to correct the code so that the resources are reliably closed
+- Create a third main method in a class of your own, copy the original main method body into it, and then use the try with resources structure to ensure the resources are reliably closed
+- Which approach is cleaner?
+- What do you notice about the closure order?
+- Extra credit! Modify the close method in the MyCloseable class so that it sometimes throws a RuntimeException, then try both your main methods again, noting any differences in behavior.
+
+Write code that creates a list of Strings representing the names of types of fruit
+- Add some fruit typenames to the list one at a time
+- print the number of items in the list
+- print the contents of the list using a c-style for-loop
+- print the contents of the list using an enhanced for loop
+- Check the documentation if necessary and change your constructor call to pre-add some of your fruits during the construction phase
+  (you might want to use the List.of, or Arrays.asList factories to initialize a List)
+- what happens if you try to add a LocalDateTime object to your list
+  (if your list variable is myList, you could use the code: myList.add(LocalDateTime.now() to attempt this)
+- what could you change if you actually wanted this to succeed (or if it did succeed--which it shouldn't!) how can you fix this so the code is rejected?
+
+Create a new program and attempt to create a List<int>
+- what happens?
+- how can you fix this?
+- what is the consequence of what you have done?
+- add several integer numbers to the list. Include at least 6 numbers, and be sure to include the number 4 in the items you add.
+- what happens if you attempt to execute: myIntegerList.remove(4)
+  how do you explain the behavior?
+
+Choose two natural languages (e.g. English, Francais)
+- create a program that uses a Map to help with translating several nouns from the first language to the second
+- what should the generic type of the Map be?
+- using google translate if necessary, add key value pairs for at least body parts (e.g. for french: arm -> bras, leg -> jambe, head -> tête, hand)
+- write a loop that iterates through all the keys and prints a translation message, for example "arm is translated to french as bras" -- ensure all the entries are reported by the loop
+- write a program that prompts the user for a noun and reports either "xxx is translated to french as yyy" or "the word xxx is not know to this dictionary"
+- Extra credit: try to write code that performs a reverse translation with a comparable user interface to the one just created. How efficient will this be?
+
+Implement a class representing a car
+- the car should have attributes for color, number of seats, fuel consumption, amount of fuel in the tank
+- ensure the attributes are private and are initialized to credible values when the object is created, throw IllegalArgumentException if the values are nonsensical
+- implement the toString method to provide a readable representation of the state of a car object
+- implement a method int getFuelRequired(int distance) which reports the amount of fuel the car would use to make a journey of the indicated distance
+- implement a method makeTrip(int distance) which reduces the fuel by the amount needed for the given distance. If the fuel is insufficient, throw an exception and do not alter the fuel quantity
+- create a list of three or more cars with different fuel amounts, and differing fuel consumptions, and then write code to determine which cars from the list are ready to make a specified trip without requiring refuelling
+- add an overloaded constructor to allow a default number of seats (say 5)
+
+Use a record rather to implement the same basic concept as the car described above
+- provide the getFuelRequired method
+- what happens if no toString method is provided?
+- can you implement the makeTrip method? If so, do so, if not, why not?
+- using this record, create two car objects with color="red", seats=5, fuel consumption=10, and fuel=10
+  test to see if the cars compare as equal using == and .equals()
+
+Think about how you would design a class representing a Model T Ford motor car
+- what attributes and methods might be best represented as static, and which as instance?
+- what data fields might be best as unmodifiable, and which should be permit modification
+- implement the class with the appropriate elements
+- arrange that your class supports comparison of two instances of Model T Ford
+- arrange that your class supports storage and retrieval in a HashSet structure
+
+Consider the design of a class representing the engine of a Model T Ford.
+- notice that an engine has intimate connections to parts of the vehicle that it powers, and that those parts are likely not available for general external use, what options exist to help represent the relationship between the engine and the vehicle?
+- how would selection of an option be affected if:
+  - the engine can only be used in a Model T Ford, and no other vehicle type
+  - the engine can only be used in one particular Model T Ford, and can never exist in isolation or be moved into another Model T Ford (recognizing this is unrealistic since car parts are often taken from scrapped vehicles and used to repair others!)
+  - the engine can be used in many different kinds of vehicle, and also in boats
+- implement the engine, building a relationship that allows it to be used in any Model T Ford and potentially removed from one and installed in another, but does not allow it to be used in any other type of vehicle
+  - demonstrate the intimate relationship with Model T Ford by giving the Model T Ford a private battery voltage and ensuring that the engine can connect to this  (Note the battery feature does not have to do anything useful, it could be an int, perhaps representing the voltage of the battery. It simply exists to demonstrate the access is possible)
+
+Implement a parent-child class relationship where the concrete parent class is Animal, and there are two concrete child classes, Cat and Eagle.
+- Let the parent class represent an integer count of legs, and represent the "home" of the animal, for example, land for a cat, air for a bird, and water for a fish.
+- Give the Animal class a method "speak", which prints a message indicating the noise the animal makes. How this should behave for an arbitrary animal
+- Give the Animal class a field of String type to represent the favorite food of the animal
+- Give the Animal class a "feed" method which takes a String indicating the food that has been offered to the animal. Print a message indicating whether the animal eats the food or not.
+- Create the Cat and Eagle classes, with appropriate methods and a constructor to ensure the behaviors above are correct for the particular animal
+- Create a test program that builds a list containing a Cat, an Eagle, and an Animal. The program should then offer various food types to each animal, and ask each to speak. Ensure the behavior is as you expect and that you understand what's happening in each case.
+- What accessibilities can you use for the fields of the Animal class?
+- Modify the parent class to be abstract.
+  - which methods should be abstract?
+  - what changes with this change?
+- Add a "pet" method to the Cat class--that's "pet" in the sense of "stroke and give attention to" so perhaps have the Cat print a "purring" message.
+  - What do you have to do to be able to call the pet method on the cat after has been fed in the test program?
+  - What happens if you try to call the pet method on the Eagle?
+
+Define interfaces Feedable and Petable
+- The Feedable interface declares two methods:
+  String getFavoriteFood()
+  void feed(String food)
+- The Petable interface declares a single method:
+  void pet()
+- Note that the feed and pet methods should match those that already exist in the Animal and Cat classes
+- Arrange for the Animal class to implement this interface
+- Modify the list to contain Feedable, rather than Animal
+  - can the list still contain all the animals?
+  - can you still pet the cat? What, if anything, do you have to change?
+
+Create a list containing names
+- use lambda expressions and the List.sort method to order the names:
+  - by ascending length
+  - by descending length
+  - by alphabetical order
+- use a lambda expression and the List.replaceAll method to convert the names to upper case.

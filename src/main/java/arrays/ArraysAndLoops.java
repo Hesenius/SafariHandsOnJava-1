@@ -20,7 +20,9 @@ public class ArraysAndLoops {
 //    int [] ia2 = new int[]{1, 1, 2, 3, 5};
     // leave off the new int[] ONLY where initializing explicit array
     int[] ia2 = {1, 1, 2, 3, 5};
-    System.out.println(Arrays.toString(ia2));
+    System.out.println("This is the array: " +  ia2);
+    System.out.println("This is the pretty form"
+        + Arrays.toString(ia2));
 
     // long form:
     for (int idx = 0; idx < ia2.length; idx++) {

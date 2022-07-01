@@ -2,7 +2,7 @@ package usingclasses;
 
 import java.util.List;
 
-public class Date {
+public class Date implements DateLike {
   class OddThing {
     private int x;
   }
@@ -10,13 +10,16 @@ public class Date {
   // -- **if running without modules**
   // -- more restricted if modular.
 
+  // protected means anywhere default has access AND
+  // in subclasses IF the reference is of the subclass type
+
   // "default" accessibility, i.e. no keyword at all, means
   // -- accessible anywhere in the same package
 
   // private means accessible anywhere inside the enclosing TOP-LEVEL
   // curly braces around the declaration
-  private int day;
-  private int month;
+  private /*protected*/ int day;
+  /*private*/ int month;
   private int year;
 //  int banana;
 
@@ -63,6 +66,11 @@ public class Date {
     return asText(this.day, this.month, this.year);
   }
 
+  @Override
+  public String toString() {
+    return this.asText();
+  }
+
   public static boolean isValid(int day, int month, int year) {
     return month >= 1 && month <= 12
         && day >= 1 && day <= daysInMonth(month, year);
@@ -90,6 +98,7 @@ public class Date {
   // satisfy the general requirement w.r.t. parent classes
   // constructors DO NOT declare a return type
   public Date(int day, int month, int year) {
+    System.out.println("in Date(...) returned from super()");
     if (!isValid(day, month, year)) {
       throw new IllegalArgumentException("Bad values");
     }
@@ -101,6 +110,34 @@ public class Date {
     this.year = year;
 //    this.banana = 99;
   }
-//  public Date() {
-//  }
+  public Date() {
+    // super();
+    // delegation to other constructor in same class
+    // cannot mix with super()
+    // MUST NOT access "this" implicitly or explicitly
+    // before parent initializion is complete
+//    this(1, this.getFirstMonth(), 2000);
+      this(1, 1, 2000); // this removes any call to super()
+    this.month = getFirstMonth();
+  }
+
+  public int getFirstMonth() {
+    return 1;
+  }
+
+  @Override
+  public int getMonth() {
+    return month;
+  }
+
+  @Override
+  public int getYear() {
+    return year;
+  }
+}
+
+class TryBrokenInitialization {
+  public static void main(String[] args) {
+    System.out.println(new Holiday().asText());
+  }
 }
